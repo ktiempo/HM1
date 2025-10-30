@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | HealthMate</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f7f8fa;
+      color: #333;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* NAVBAR - Same as Home Page */
+    header {
+      background: #0088a9;
+      color: white;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      text-decoration: underline;
+      color: #d8f3fd;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 80px 0;
+      background-color: #f7f8fa;
+    }
+
+    .about-section img {
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-section h2 {
+      font-weight: 700;
+      color: #0088a9;
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      color: #333;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #004b63;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: auto;
+    }
+
+    @media(max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER (Unified Navbar) -->
+  <header>
+    <a href="index.html" class="logo">HealthMate</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="about-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <img src="Images/about.jpg" alt="About HealthMate" class="img-fluid">
+          </div>
+          <div class="col-md-6">
+            <h2>About HealthMate</h2>
+            <p>
+              <strong>HealthMate</strong> is a smart online doctor appointment system designed to make healthcare more accessible
+              for everyone. We connect patients, doctors, and administrators in one seamless digital platform.
+            </p>
+            <p>
+              Through HealthMate, patients can book consultations, doctors can manage their schedules, and 
+              administrators can monitor clinic operations efficiently and securely.
+            </p>
+            <p><strong>Our Mission:</strong> To bring convenience and innovation to healthcare by making 
+            appointments, consultations, and patient management easier and more efficient.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 HealthMate. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
