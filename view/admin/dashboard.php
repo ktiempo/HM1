@@ -25,72 +25,80 @@ include('includes/sidebar.php');
 
         <!-- Doctors Card -->
         <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card info-card h-100 shadow-sm border-0">
-            <div class="card-body">
-              <h5 class="card-title">Doctors <span>| Registered</span></h5>
-              <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-person-badge" style="color:#0088a9;"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>
-                    <?php
-                      $result = $conn->query("SELECT COUNT(*) AS total FROM doctors");
-                      echo $result->fetch_assoc()['total'];
-                    ?>
-                  </h6>
-                  <span class="text-muted small pt-2 ps-1">Total Doctors</span>
+          <a href="manage_doctors.php" class="text-decoration-none">
+            <div class="card info-card h-100 shadow-sm border-0">
+              <div class="card-body">
+                <h5 class="card-title">Doctors <span>| Registered</span></h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-person-badge" style="color:#0088a9;"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>
+                      <?php
+                        $result = $conn->query("SELECT COUNT(*) AS total FROM doctors");
+                        echo $result->fetch_assoc()['total'];
+                      ?>
+                    </h6>
+                    <span class="text-muted small pt-2 ps-1">Total Doctors</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div><!-- End Doctors Card -->
+          </a>
+        </div>
+
 
         <!-- Patients Card -->
         <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card info-card h-100 shadow-sm border-0">
-            <div class="card-body">
-              <h5 class="card-title">Patients <span>| Registered</span></h5>
-              <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-people" style="color:#0088a9;"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>
-                    <?php
-                      $result = $conn->query("SELECT COUNT(*) AS total FROM patients");
-                      echo $result->fetch_assoc()['total'];
-                    ?>
-                  </h6>
-                  <span class="text-muted small pt-2 ps-1">Total Patients</span>
+          <a href="patients.php" class="text-decoration-none">
+            <div class="card info-card h-100 shadow-sm border-0">
+              <div class="card-body">
+                <h5 class="card-title">Patients <span>| Registered</span></h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-people" style="color:#0088a9;"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>
+                      <?php
+                        $result = $conn->query("SELECT COUNT(*) AS total FROM patients");
+                        echo $result->fetch_assoc()['total'];
+                      ?>
+                    </h6>
+                    <span class="text-muted small pt-2 ps-1">Total Patients</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div><!-- End Patients Card -->
+          </a>
+        </div>
 
         <!-- Appointments Card -->
         <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card info-card h-100 shadow-sm border-0">
-            <div class="card-body">
-              <h5 class="card-title">Appointments <span>| Total</span></h5>
-              <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-calendar-check" style="color:#0088a9;"></i>
-                </div>
-                <div class="ps-3">
-                  <h6>
-                    <?php
-                      $result = $conn->query("SELECT COUNT(*) AS total FROM appointments");
-                      echo $result->fetch_assoc()['total'];
-                    ?>
-                  </h6>
-                  <span class="text-muted small pt-2 ps-1">Total Appointments</span>
+          <a href="appointments.php" class="text-decoration-none">
+            <div class="card info-card h-100 shadow-sm border-0">
+              <div class="card-body">
+                <h5 class="card-title">Appointments <span>| Total</span></h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-calendar-check" style="color:#0088a9;"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>
+                      <?php
+                        $result = $conn->query("SELECT COUNT(*) AS total FROM appointments");
+                        echo $result->fetch_assoc()['total'];
+                      ?>
+                    </h6>
+                    <span class="text-muted small pt-2 ps-1">Total Appointments</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div><!-- End Appointments Card -->
+          </a>
+        </div>
+
 
       </div><!-- End Row -->
     </div><!-- End Container -->
