@@ -2,7 +2,7 @@
 session_start();
 include('../../db/config.php');
 
-// ✅ Secure session check
+// ✅ Session protection
 if (!isset($_SESSION['admin_id'])) {
   header("Location: ../admin_login.php");
   exit;
@@ -11,27 +11,6 @@ if (!isset($_SESSION['admin_id'])) {
 include('includes/header.php');
 include('includes/topbar.php');
 include('includes/sidebar.php');
-
-// ✅ Handle form submission
-if (isset($_POST['add_doctor'])) {
-  $name = trim($_POST['name']);
-  $email = trim($_POST['email']);
-  $password = trim($_POST['password']);
-  $specialization = trim($_POST['specialization']);
-  $contact = trim($_POST['contact']);
-  $address = trim($_POST['address']);
-  $schedule = trim($_POST['schedule']);
-
-  // Optional: you can hash the password later
-  $stmt = $conn->prepare("INSERT INTO doctors (full_name, email, password, specialization, contact_number, clinic_address, clinic_schedule) VALUES (?, ?, ?, ?, ?, ?, ?)");
-  $stmt->bind_param("sssssss", $name, $email, $password, $specialization, $contact, $address, $schedule);
-
-  if ($stmt->execute()) {
-    $success = "Doctor added successfully!";
-  } else {
-    $error = "Error adding doctor: " . $conn->error;
-  }
-}
 ?>
 
 <main id="main" class="main">
@@ -52,36 +31,37 @@ if (isset($_POST['add_doctor'])) {
       <div class="card-body">
         <h5 class="card-title">Doctor Information</h5>
 
-        <form method="POST" class="row g-3">
+        <!-- ✅ Action now points to controller/admin/add_doctor.php -->
+        <form method="POST" action="/HM1/controller/admin/add_doctor.php" class="row g-3">
 
           <div class="col-md-6">
             <label class="form-label">Full Name</label>
-            <input type="text" name="name" class="form-control" required>
+            <input type="text" name="name" class="form-control" placeholder="Dr. Juan Dela Cruz" required>
           </div>
 
           <div class="col-md-6">
             <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" required>
+            <input type="email" name="email" class="form-control" placeholder="doctor@email.com" required>
           </div>
 
           <div class="col-md-6">
             <label class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" required>
+            <input type="password" name="password" class="form-control" placeholder="Enter password" required>
           </div>
 
           <div class="col-md-6">
             <label class="form-label">Specialization</label>
-            <input type="text" name="specialization" class="form-control" required>
+            <input type="text" name="specialization" class="form-control" placeholder="e.g., Cardiology" required>
           </div>
 
           <div class="col-md-6">
             <label class="form-label">Contact Number / Landline</label>
-            <input type="text" name="contact" class="form-control">
+            <input type="text" name="contact" class="form-control" placeholder="e.g., 09123456789">
           </div>
 
           <div class="col-md-6">
             <label class="form-label">Clinic Address</label>
-            <input type="text" name="address" class="form-control">
+            <input type="text" name="address" class="form-control" placeholder="e.g., HealthMate Clinic, Cebu City">
           </div>
 
           <div class="col-md-12">
@@ -94,7 +74,7 @@ if (isset($_POST['add_doctor'])) {
             <a href="manage_doctors.php" class="btn btn-secondary px-4">Cancel</a>
           </div>
 
-        </form>
+        </form><!-- End Add Doctor Form -->
       </div>
     </div>
   </section>
@@ -104,23 +84,21 @@ if (isset($_POST['add_doctor'])) {
 <?php include('includes/footer.php'); ?>
 
 <!-- SweetAlert for feedback -->
-<?php if (isset($success)): ?>
+<?php if (isset($_GET['success'])): ?>
 <script>
 Swal.fire({
   icon: 'success',
   title: 'Success!',
-  text: '<?php echo $success; ?>',
+  text: '<?php echo htmlspecialchars($_GET['success']); ?>',
   confirmButtonColor: '#0088a9'
 });
 </script>
-<?php endif; ?>
-
-<?php if (isset($error)): ?>
+<?php elseif (isset($_GET['error'])): ?>
 <script>
 Swal.fire({
   icon: 'error',
   title: 'Error!',
-  text: '<?php echo $error; ?>',
+  text: '<?php echo htmlspecialchars($_GET['error']); ?>',
   confirmButtonColor: '#0088a9'
 });
 </script>
@@ -129,7 +107,7 @@ Swal.fire({
 <style>
   .card {
     margin-top: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
   }
   .card-title {
     color: #004b63;
@@ -137,6 +115,10 @@ Swal.fire({
   }
   label.form-label {
     font-weight: 500;
+    color: #004b63;
+  }
+  .form-control {
+    border-radius: 8px;
   }
   .btn-primary:hover {
     background-color: #00748a;
